@@ -1,0 +1,65 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Auth extends CI_Controller
+{
+
+	/**
+	 * __construct
+	 *
+	 * @return void
+	 */
+	function __construct()
+	{
+		parent::__construct();
+	} //end function
+
+	/**
+	 * login
+	 *
+	 * @return void
+	 */
+	public function login()
+	{
+		// if already logged in
+		if (@$this->session->userdata('user_session')->logged_in) {
+			redirect(BASE_URL . 'dashboard');
+		}
+		//end
+
+		$data['page_title'] = "Portal | Login";
+
+		$this->form_validation->set_rules('email', 'Email', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+
+		if ($this->form_validation->run() === FALSE) {
+			$data['auth_errors'] = validation_errors();
+			$this->load->view('auth/index', $data);
+		} else {
+			$email = trim(html_escape($this->input->post('email')));
+			$password = trim(html_escape(md5($this->input->post('password'))));
+			$response = $this->auth_model->login($email, $password);
+			if ($response) {
+				$response->logged_in = true;
+				$this->session->set_userdata('user_session', $response);
+
+				redirect(BASE_URL . 'dashboard');
+			} else {
+				$this->session->set_flashdata('login_failed', 'Please login with correct email & password');
+				redirect(BASE_URL . 'auth/login');
+			}
+		}
+	}
+	//function end
+
+	/**
+	 * logout
+	 *
+	 * @return void
+	 */
+	public function logout()
+	{
+		unset($_SESSION['user_session']);
+		redirect(BASE_URL . 'auth/login');
+	} //function end
+}
