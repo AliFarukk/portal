@@ -24,7 +24,7 @@
  				<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
  				<li class="nav-item">
- 					<a href="<?= BASE_URL.'/dashboard' ?>" class="nav-link">
+ 					<a href="<?= BASE_URL.'dashboard' ?>" class="nav-link">
  						<i class="nav-icon fas fa-tachometer-alt"></i>
  						<p>
  							Dashboard
@@ -32,7 +32,15 @@
  					</a>
  				</li>
  				<li class="nav-item">
- 					<a href="<?= BASE_URL.'/auth/logout' ?>" class="nav-link">
+ 					<a href="<?= BASE_URL.'project' ?>" class="nav-link">
+ 						<i class="nav-icon fas fa-tachometer-alt"></i>
+ 						<p>
+ 							Projects
+ 						</p>
+ 					</a>
+ 				</li>
+ 				<li class="nav-item">
+ 					<a href="<?= BASE_URL.'auth/logout' ?>" class="nav-link">
  						<i class="nav-icon fas fa-tachometer-alt"></i>
  						<p>
  							Logout
