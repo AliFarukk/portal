@@ -80,7 +80,7 @@
 										<th scope="col">ID</th>
 										<th scope="col">Type</th>
 										<th scope="col">Link</th>
-										<!-- <th>Action</th> -->
+										<th>Action</th>
 
 
 									</tr>
@@ -91,12 +91,11 @@
 											<td><?= $li->backlink_id ?></td>
 											<td><?= $li->type_name ?></td>
 											<td><?= $li->link ?></td>
-											<!-- <td>
-												<a class="btn btn-primary" href="">Edit</a> <br>
-												<a class="btn btn-danger mt-1" href="">Delete</a>
-												<br>
-												<a class="btn btn-primary mt-1" href="">Backlinks</a>
-											</td> -->
+											<td>
+												<a class="btn btn-primary" href="<?=BASE_URL.'backlink/edit_backlink/'.$li->backlink_id;?>">Edit</a> <br>
+												<a class="btn btn-danger mt-1" href="<?=BASE_URL.'backlink/delete/'.$li->backlink_id;?>" onclick="return confirm('Are you sure you want to delete this backilink')">Delete</a>
+												
+											</td>
 										</tr>
 
 									<?php endforeach; ?>

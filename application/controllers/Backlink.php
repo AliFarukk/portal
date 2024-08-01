@@ -66,36 +66,42 @@ class Backlink extends CI_Controller
 	}
 
 	// edit project
-	public function edit_project($id)
+	public function edit_backlink($id)
 	{
-		$data['page_title'] = "Edit Project";
-		$data['project'] = $this->project_model->edit($id);
-		if ($data['project'] == false) {
-			$this->session->set_flashdata('404', "Nothing found");
+		$data['page_title'] = "Edit Backlink";
+		$data['backlink'] = $this->backlink_model->edit($id);
+		$data['types'] = $this->type_model->types();
+		if ($data['backlink'] == false) {
+			$this->session->set_flashdata('e404', "Nothing found");
 			return redirect(BASE_URL . 'project');
 		} else {
-			$this->load->view("admin_dashboard/projects/edit_project", $data);
+			$this->load->view("admin_dashboard/backlinks/edit_backlink", $data);
 		}
 	}
 
-	// update project
+	// update backlink
 	public function update($id)
 	{
-		// $data['page_title'] = "Add Project";
-		$this->form_validation->set_rules('name', 'Project Name', 'required');
+		
+		$this->form_validation->set_rules('type', 'Type is required', 'required');
+		$this->form_validation->set_rules('link', 'Link is required', 'required');
 		
 		if ($this->form_validation->run() == FALSE) {
 			$errors['errors'] = validation_errors();
 			$this->session->set_flashdata($errors);
-			return redirect(BASE_URL . 'project/edit_project/' . $id);
+			return redirect(BASE_URL . 'backlink/edit_backlink/' . $id);
 		}
 		 else {
-			$project = array(
-				"project_name" => trim(html_escape($this->input->post('name', TRUE)))
+			$backlink = array(
+				"type" => trim(html_escape($this->input->post('type', TRUE))),
+				"link" => trim(html_escape($this->input->post('link', TRUE)))
 			);
 			
-			if ($this->project_model->update($id,$project)) {
-				$this->session->set_flashdata('success', "Project updated successfully.");
+			if ($this->backlink_model->update($id,$backlink)) {
+				$this->session->set_flashdata('success', "Backlink updated successfully.");
+				return redirect(BASE_URL . "project");
+			}else{
+				$this->session->set_flashdata('fail', "Backlink update failed. Please try again.");
 				return redirect(BASE_URL . "project");
 			}
 		}
@@ -104,12 +110,12 @@ class Backlink extends CI_Controller
 	// delete project
 	public function delete($id)
 	{
-		$data['product'] = $this->project_model->delete($id);
-		if ($data['product'] == false) {
-			$this->session->set_flashdata('delete', "Project delete error ");
+		$data['backlink'] = $this->backlink_model->delete($id);
+		if ($data['backlink'] == false) {
+			$this->session->set_flashdata('delete', "Backlink delete error ");
 			return redirect(BASE_URL . 'project');
 		} else {
-			$this->session->set_flashdata('delete', "Project deleted successfully ");
+			$this->session->set_flashdata('delete', "Backlink deleted successfully ");
 			return redirect(BASE_URL . 'project');
 		}
 	}

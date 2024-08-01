@@ -55,7 +55,7 @@ class Project extends CI_Controller
 		$data['page_title'] = "Edit Project";
 		$data['project'] = $this->project_model->edit($id);
 		if ($data['project'] == false) {
-			$this->session->set_flashdata('404', "Nothing found");
+			$this->session->set_flashdata('e404', "Nothing found");
 			return redirect(BASE_URL . 'project');
 		} else {
 			$this->load->view("admin_dashboard/projects/edit_project", $data);

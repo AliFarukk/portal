@@ -32,9 +32,18 @@
 
 			
 					<!-- nothing found -->
-					<?php if ($this->session->flashdata('404')) : ?>
-						<div class="alert alert-success alert-dismissible fade show" role="alert">
-							<?= $this->session->flashdata('404') ?>
+					<?php if ($this->session->flashdata('e404')) : ?>
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<?= $this->session->flashdata('e404') ?>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					<?php endif; ?>
+					<!-- nothing found -->
+					<?php if ($this->session->flashdata('fail')) : ?>
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<?= $this->session->flashdata('fail') ?>
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>

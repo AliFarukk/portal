@@ -26,8 +26,8 @@ class Backlink_model extends CI_Model
 	// get single project for edit
 	public function edit($id)
 	{
-		$this->db->where('project_id', $id);
-		$query = $this->db->get('projects');
+		$this->db->where('backlink_id', $id);
+		$query = $this->db->get('backlinks');
 		if ($query) {
 			return $query->row();
 		} else {
@@ -36,10 +36,10 @@ class Backlink_model extends CI_Model
 	} // function ends
 
 	// update project
-	public function update($id, $project)
+	public function update($id, $backlink)
 	{
-		$this->db->where('project_id', $id);
-		$query = $this->db->update('projects', $project);
+		$this->db->where('backlink_id', $id);
+		$query = $this->db->update('backlinks', $backlink);
 		if ($query) {
 			return true;
 		} else {
@@ -51,8 +51,8 @@ class Backlink_model extends CI_Model
 
 	public function delete($id)
 	{
-		$this->db->where('project_id', $id);
-		$query = $this->db->delete('projects');
+		$this->db->where('backlink_id', $id);
+		$query = $this->db->delete('backlinks');
 		if ($query) {
 			return true;
 		} else {
