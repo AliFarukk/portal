@@ -13,9 +13,9 @@ class Type_model extends CI_Model
 	}
 
 	// save project
-	public function save($project)
+	public function save($type)
 	{
-		$this->db->insert('projects', $project);
+		$this->db->insert('types', $type);
 		if ($this->db->affected_rows() > 0) {
 			return true;
 		} else {
@@ -23,11 +23,11 @@ class Type_model extends CI_Model
 		}
 	} // function ends
 
-	// get single project for edit
+	// get single type for edit
 	public function edit($id)
 	{
-		$this->db->where('project_id', $id);
-		$query = $this->db->get('projects');
+		$this->db->where('type_id', $id);
+		$query = $this->db->get('types');
 		if ($query) {
 			return $query->row();
 		} else {
@@ -36,10 +36,10 @@ class Type_model extends CI_Model
 	} // function ends
 
 	// update project
-	public function update($id, $project)
+	public function update($id, $type)
 	{
-		$this->db->where('project_id', $id);
-		$query = $this->db->update('projects', $project);
+		$this->db->where('type_id', $id);
+		$query = $this->db->update('types', $type);
 		if ($query) {
 			return true;
 		} else {
@@ -51,8 +51,8 @@ class Type_model extends CI_Model
 
 	public function delete($id)
 	{
-		$this->db->where('project_id', $id);
-		$query = $this->db->delete('projects');
+		$this->db->where('type_id', $id);
+		$query = $this->db->delete('types');
 		if ($query) {
 			return true;
 		} else {
