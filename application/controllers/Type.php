@@ -12,6 +12,9 @@ class Type extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('user_session')->logged_in) {
+			redirect(BASE_URL . 'auth/login');
+		}
 	} //end function
 
 	public function all_types(){
