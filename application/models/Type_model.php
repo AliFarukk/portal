@@ -7,12 +7,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Type_model extends CI_Model
 {
 
-	// all projects
+	// all types
     public function types(){
 		return $this->db->select('*')->from('types')->get()->result();
 	}
 
-	// save project
+	// save type
 	public function save($type)
 	{
 		$this->db->insert('types', $type);
@@ -35,7 +35,7 @@ class Type_model extends CI_Model
 		}
 	} // function ends
 
-	// update project
+	// update type
 	public function update($id, $type)
 	{
 		$this->db->where('type_id', $id);
@@ -47,7 +47,7 @@ class Type_model extends CI_Model
 		}
 	} // function ends
 
-	// delete project
+	// delete type
 
 	public function delete($id)
 	{

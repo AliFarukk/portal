@@ -23,7 +23,7 @@ class Backlink_model extends CI_Model
 		}
 	} // function ends
 
-	// get single project for edit
+	// get single backlink for edit
 	public function edit($id)
 	{
 		$this->db->where('backlink_id', $id);
@@ -35,7 +35,7 @@ class Backlink_model extends CI_Model
 		}
 	} // function ends
 
-	// update project
+	// update backlink
 	public function update($id, $backlink)
 	{
 		$this->db->where('backlink_id', $id);
@@ -47,7 +47,7 @@ class Backlink_model extends CI_Model
 		}
 	} // function ends
 
-	// delete project
+	// delete backlink
 
 	public function delete($id)
 	{

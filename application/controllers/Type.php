@@ -25,17 +25,17 @@ class Type extends CI_Controller
 		$this->load->view('admin_dashboard/types/all_types',$data);
 	}
 	
-	//add project
+	//add type
 	public function add_type(){
 		$data['page_title'] = "Add Type";
 		$this->load->view('admin_dashboard/types/add_type',$data);
 	}
 
-	// save project
+	// save type
 
 	public function save_type()
 	{
-		// dd('inbacklink');
+		
 		$data['page_title'] = "Save Type";
 		$this->form_validation->set_rules('name', 'Type', 'required');
 		
@@ -61,7 +61,7 @@ class Type extends CI_Controller
 		}
 	}
 
-	// edit project
+	// edit type
 	public function edit_type($id)
 	{
 		$data['page_title'] = "Edit Type";
@@ -101,7 +101,7 @@ class Type extends CI_Controller
 		}
 	}
 
-	// delete project
+	// delete type
 	public function delete($id)
 	{
 		$data['type'] = $this->type_model->delete($id);

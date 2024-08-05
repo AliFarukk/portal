@@ -26,7 +26,7 @@ class Backlink extends CI_Controller
 		$this->load->view('admin_dashboard/backlinks/all_backlinks',$data);
 	}
 	
-	//add project
+	//add backlink
 	public function add_backlink($project_id){
 		$data['page_title'] = "Add Backlink";
 		$data['project_id'] = $project_id;
@@ -34,11 +34,10 @@ class Backlink extends CI_Controller
 		$this->load->view('admin_dashboard/backlinks/add_backlink',$data);
 	}
 
-	// save project
+	// save backlink
 
 	public function save_backlink()
 	{
-		// dd('inbacklink');
 		$data['page_title'] = "Save Backlink";
 		$this->form_validation->set_rules('type', 'Type is required', 'required');
 		$this->form_validation->set_rules('project_id', 'Project is required', 'required');
@@ -68,7 +67,7 @@ class Backlink extends CI_Controller
 		}
 	}
 
-	// edit project
+	// edit backlink
 	public function edit_backlink($id)
 	{
 		$data['page_title'] = "Edit Backlink";
@@ -110,7 +109,7 @@ class Backlink extends CI_Controller
 		}
 	}
 
-	// delete project
+	// delete backlink
 	public function delete($id)
 	{
 		$data['backlink'] = $this->backlink_model->delete($id);
