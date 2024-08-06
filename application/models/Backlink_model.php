@@ -8,8 +8,8 @@ class Backlink_model extends CI_Model
 {
 
 	// all backlinks
-    public function backlinks(){
-		return $this->db->select('*')->from('backlinks b')->join('types t','t.type_id = b.type')->get()->result();
+    public function backlinks($project_id){
+		return $this->db->select('*')->from('backlinks b')->where('project_id',$project_id)->join('types t','t.type_id = b.type')->get()->result();
 	}
 
 	// save backlink

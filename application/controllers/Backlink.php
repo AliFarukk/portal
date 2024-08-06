@@ -22,7 +22,7 @@ class Backlink extends CI_Controller
 
 		$data['page_title'] = "Backlinks";
 		$data['project_id'] = $project_id;
-		$data['backlinks'] = $this->backlink_model->backlinks();
+		$data['backlinks'] = $this->backlink_model->backlinks($project_id);
 		$this->load->view('admin_dashboard/backlinks/all_backlinks',$data);
 	}
 	
@@ -61,7 +61,7 @@ class Backlink extends CI_Controller
 			
 			if ($this->backlink_model->save($backlink)) {
 				$this->session->set_flashdata('success', "Backlink added successfully.");
-				return redirect(BASE_URL . "project/all_backlinks/".$this->input->post('project_id', TRUE));
+				return redirect(BASE_URL . "backlink/all_backlinks/".$this->input->post('project_id', TRUE));
 			}else{
 				$this->session->set_flashdata('errors', "Something went wrong. Please try agin.");
 				return redirect(BASE_URL . 'backlink/add_backlink/' . $this->input->post('project_id', TRUE));
