@@ -39,9 +39,10 @@ class Backlink extends CI_Controller
 	public function save_backlink()
 	{
 		$data['page_title'] = "Save Backlink";
-		$this->form_validation->set_rules('type', 'Type is required', 'required');
-		$this->form_validation->set_rules('project_id', 'Project is required', 'required');
-		$this->form_validation->set_rules('link', 'Link is required', 'required');
+		$this->form_validation->set_rules('type', 'Type', 'required');
+		$this->form_validation->set_rules('project_id', 'Project id', 'required');
+		$this->form_validation->set_rules('domain', 'Domain', 'required');
+		$this->form_validation->set_rules('link', 'Link', 'required');
 		
 		if ($this->form_validation->run() == FALSE) {
 			$errors['errors'] = validation_errors();
@@ -53,6 +54,7 @@ class Backlink extends CI_Controller
 			$backlink = array(
 				"project_id" => trim(html_escape($this->input->post('project_id', TRUE))),
 				"type" => trim(html_escape($this->input->post('type', TRUE))),
+				"domain" => trim(html_escape($this->input->post('domain', TRUE))),
 				"link" => trim(html_escape($this->input->post('link', TRUE)))
 			);
 			
@@ -85,8 +87,9 @@ class Backlink extends CI_Controller
 	public function update($id)
 	{
 		
-		$this->form_validation->set_rules('type', 'Type is required', 'required');
-		$this->form_validation->set_rules('link', 'Link is required', 'required');
+		$this->form_validation->set_rules('type', 'Type', 'required');
+		$this->form_validation->set_rules('domain', 'Domain', 'required');
+		$this->form_validation->set_rules('link', 'Link', 'required');
 		
 		if ($this->form_validation->run() == FALSE) {
 			$errors['errors'] = validation_errors();
@@ -96,6 +99,7 @@ class Backlink extends CI_Controller
 		 else {
 			$backlink = array(
 				"type" => trim(html_escape($this->input->post('type', TRUE))),
+				"domain" => trim(html_escape($this->input->post('domain', TRUE))),
 				"link" => trim(html_escape($this->input->post('link', TRUE)))
 			);
 			

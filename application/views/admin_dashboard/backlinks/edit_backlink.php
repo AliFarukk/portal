@@ -58,6 +58,10 @@
 
 							</div>
 							
+							<div class="form-group w-sm-100 w-lg-50">
+								<label for="exampleInputEmail1">Referral Domain</label>
+								<input required type="url" value="<?=$backlink->domain;?>" name="domain" class="form-control" placeholder="Domain" >
+							</div>
 
 							<div class="form-group w-sm-100 w-lg-50">
 								<label for="exampleInputEmail1">Link</label>

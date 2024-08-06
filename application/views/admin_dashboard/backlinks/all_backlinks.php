@@ -79,6 +79,7 @@
 									<tr>
 										<th scope="col">ID</th>
 										<th scope="col">Type</th>
+										<th scope="col">Domain</th>
 										<th scope="col">Link</th>
 										<th>Action</th>
 
@@ -90,6 +91,7 @@
 										<tr>
 											<td><?= $li->backlink_id ?></td>
 											<td><?= $li->type_name ?></td>
+											<td><?= $li->domain ?></td>
 											<td><?= $li->link ?></td>
 											<td>
 												<a class="btn btn-primary" href="<?=BASE_URL.'backlink/edit_backlink/'.$li->backlink_id;?>">Edit</a> <br>

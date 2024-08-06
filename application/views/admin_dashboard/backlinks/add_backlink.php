@@ -64,6 +64,11 @@
 							</div>
 
 							<div class="form-group w-sm-100 w-lg-50">
+								<label for="exampleInputEmail1">Referral Domain</label>
+								<input required type="url" name="domain" class="form-control" placeholder="Domain" >
+							</div>
+							
+							<div class="form-group w-sm-100 w-lg-50">
 								<label for="exampleInputEmail1">Link</label>
 								<input required type="url" name="link" class="form-control" placeholder="Url" >
 
