@@ -87,6 +87,7 @@
 									</tr>
 								</thead>
 								<tbody>
+									<?php if(!empty($backlinks)):?>
 								<?php foreach ($backlinks as $li) : ?>
 										<tr>
 											<td><?= $li->backlink_id ?></td>
@@ -101,6 +102,7 @@
 										</tr>
 
 									<?php endforeach; ?>
+									<?php endif;?>
 									
 
 								</tbody>

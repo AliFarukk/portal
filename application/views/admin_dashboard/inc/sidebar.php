@@ -48,6 +48,14 @@
  					</a>
  				</li>
  				<li class="nav-item">
+ 					<a href="<?= BASE_URL.'auth/users'; ?>" class="nav-link">
+ 						<i class="nav-icon fas fa-tachometer-alt"></i>
+ 						<p>
+ 							Users
+ 						</p>
+ 					</a>
+ 				</li>
+ 				<li class="nav-item">
  					<a href="<?= BASE_URL.'auth/logout' ?>" class="nav-link">
  						<i class="nav-icon fas fa-tachometer-alt"></i>
  						<p>

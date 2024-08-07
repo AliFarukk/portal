@@ -9,12 +9,12 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0">Backlink Types</h1>
+					<h1 class="m-0">Users</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Backlink Types</li>
+						<li class="breadcrumb-item active">Users</li>
 					</ol>
 				</div>
 			</div>
@@ -50,14 +50,6 @@
 							</button>
 						</div>
 					<?php endif; ?>
-					<?php if ($this->session->flashdata('fail')) : ?>
-						<div class="alert alert-danger alert-dismissible fade show" role="alert">
-							<?= $this->session->flashdata('fail') ?>
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-					<?php endif; ?>
 					<!-- delete -->
 					<?php if ($this->session->flashdata('delete')) : ?>
 						<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -72,13 +64,13 @@
 					<!-- general form elements -->
 					<div class="card card-primary">
 						<div class="card-header">
-							<h3 class="card-title">List of Backlink Types</h3>
+							<h3 class="card-title">List of Users</h3>
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body">
 							<!-- add project -->
 							<div>
-								<a class="btn btn-primary" href="<?= BASE_URL . 'type/add_type'; ?>">Add Type</a>
+								<a class="btn btn-primary" href="<?= BASE_URL . 'auth/add_user'; ?>">Add User</a>
 							</div>
 
 							<!-- Table start -->
@@ -86,28 +78,31 @@
 								<thead>
 									<tr>
 										<th scope="col">ID</th>
-										<th scope="col">Type</th>
+										<th scope="col">Role</th>
+										<th scope="col">Name</th>
+										<th scope="col">Email</th>
 										<th>Action</th>
 
 
 									</tr>
 								</thead>
 								<tbody>
-									<?php if (!empty($types)) : ?>
-										<?php foreach ($types as $ty) : ?>
+									<?php if (!empty($users)) : ?>
+										<?php foreach ($users as $user) : ?>
 											<tr>
-												<td><?= $ty->type_id ?></td>
-												<td><?= $ty->type_name ?></td>
-
+												<td><?= $user->id ?></td>
+												<td><?= $user->role_name ?></td>
+												<td><?= $user->name ?></td>
+												<td><?= $user->email ?></td>
 												<td>
-													<a class="btn btn-primary" href="<?= BASE_URL . 'type/edit_type/' . $ty->type_id; ?>">Edit</a> <br>
-													<a class="btn btn-danger mt-1" href="<?= BASE_URL . 'type/delete/' . $ty->type_id; ?>" onclick="return confirm('Are you sure you want to delete this Type')">Delete</a>
 
+													<a class="btn btn-danger mt-1" href="<?= BASE_URL . 'auth/delete/' . $user->id; ?>" onclick="return confirm('Are you sure you want to delete this user')">Delete</a>
 												</td>
 											</tr>
 
 										<?php endforeach; ?>
 									<?php endif; ?>
+
 
 								</tbody>
 							</table>

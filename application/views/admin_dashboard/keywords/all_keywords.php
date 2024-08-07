@@ -87,20 +87,21 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($keywords as $key) : ?>
-										<tr>
-											<td><?= $key->keyword_id ?></td>
-											<td><?= $key->keyword ?></td>
-											<td><?= $key->initial_ranking ?></td>
-											<td><?= $key->current_ranking ?></td>
-											<td>
-												<a class="btn btn-primary" href="<?= BASE_URL . 'keyword/edit_keyword/' . $key->keyword_id ?>">Edit</a> <br>
-												<a class="btn btn-danger mt-1" href="<?= BASE_URL . 'keyword/delete/' . $key->keyword_id ?>" onclick="return confirm('Are you sure you want to delete this keyword')">Delete</a>
-											</td>
-										</tr>
+									<?php if (!empty($keywords)) : ?>
+										<?php foreach ($keywords as $key) : ?>
+											<tr>
+												<td><?= $key->keyword_id ?></td>
+												<td><?= $key->keyword ?></td>
+												<td><?= $key->initial_ranking ?></td>
+												<td><?= $key->current_ranking ?></td>
+												<td>
+													<a class="btn btn-primary" href="<?= BASE_URL . 'keyword/edit_keyword/' . $key->keyword_id ?>">Edit</a> <br>
+													<a class="btn btn-danger mt-1" href="<?= BASE_URL . 'keyword/delete/' . $key->keyword_id ?>" onclick="return confirm('Are you sure you want to delete this keyword')">Delete</a>
+												</td>
+											</tr>
 
-									<?php endforeach; ?>
-
+										<?php endforeach; ?>
+									<?php endif; ?>
 
 								</tbody>
 							</table>

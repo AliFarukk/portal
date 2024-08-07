@@ -30,7 +30,7 @@
 				<div class="col-lg-12">
 
 
-			
+
 					<!-- nothing found -->
 					<?php if ($this->session->flashdata('e404')) : ?>
 						<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -49,7 +49,7 @@
 							</button>
 						</div>
 					<?php endif; ?>
-					
+
 					<!-- success -->
 					<?php if ($this->session->flashdata('success')) : ?>
 						<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -94,22 +94,23 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($projects as $project) : ?>
-										<tr>
-											<td><?= $project->project_id ?></td>
-											<td><?= $project->project_name ?></td>
-											<td>
-												<a class="btn btn-primary" href="<?=BASE_URL.'project/edit_project/'.$project->project_id?>">Edit</a> <br>
-												<a class="btn btn-danger mt-1" href="<?=BASE_URL.'project/delete/'.$project->project_id?>" onclick="return confirm('Are you sure you want to delete this project')">Delete</a>
-												<br>
-												<a class="btn btn-primary mt-1" href="<?=BASE_URL.'backlink/all_backlinks/'.$project->project_id?>">Backlinks</a>
-												<br>
-												<a class="btn btn-primary mt-1" href="<?=BASE_URL.'keyword/all_keywords/'.$project->project_id?>">Keywords</a>
-											</td>
-										</tr>
+									<?php if (!empty($projects)) : ?>
+										<?php foreach ($projects as $project) : ?>
+											<tr>
+												<td><?= $project->project_id ?></td>
+												<td><?= $project->project_name ?></td>
+												<td>
+													<a class="btn btn-primary" href="<?= BASE_URL . 'project/edit_project/' . $project->project_id ?>">Edit</a> <br>
+													<a class="btn btn-danger mt-1" href="<?= BASE_URL . 'project/delete/' . $project->project_id ?>" onclick="return confirm('Are you sure you want to delete this project')">Delete</a>
+													<br>
+													<a class="btn btn-primary mt-1" href="<?= BASE_URL . 'backlink/all_backlinks/' . $project->project_id ?>">Backlinks</a>
+													<br>
+													<a class="btn btn-primary mt-1" href="<?= BASE_URL . 'keyword/all_keywords/' . $project->project_id ?>">Keywords</a>
+												</td>
+											</tr>
 
-									<?php endforeach; ?>
-
+										<?php endforeach; ?>
+									<?php endif; ?>
 								</tbody>
 							</table>
 						</div>
