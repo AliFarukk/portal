@@ -24,7 +24,7 @@
  				<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
  				<li class="nav-item">
- 					<a href="<?= BASE_URL.'dashboard' ;?>" class="nav-link">
+ 					<a href="<?= BASE_URL . 'dashboard'; ?>" class="nav-link">
  						<i class="nav-icon fas fa-tachometer-alt"></i>
  						<p>
  							Dashboard
@@ -32,38 +32,40 @@
  					</a>
  				</li>
  				<li class="nav-item">
- 					<a href="<?= BASE_URL.'project' ;?>" class="nav-link">
+ 					<a href="<?= BASE_URL . 'project'; ?>" class="nav-link">
  						<i class="nav-icon fas fa-tachometer-alt"></i>
  						<p>
  							Projects
  						</p>
  					</a>
  				</li>
+ 				<?php if ($this->session->userdata('user_session')->role_id == 1): ?>
+ 					<li class="nav-item">
+ 						<a href="<?= BASE_URL . 'type/all_types'; ?>" class="nav-link">
+ 							<i class="nav-icon fas fa-tachometer-alt"></i>
+ 							<p>
+ 								Link Types
+ 							</p>
+ 						</a>
+ 					</li>
+ 					<li class="nav-item">
+ 						<a href="<?= BASE_URL . 'auth/users'; ?>" class="nav-link">
+ 							<i class="nav-icon fas fa-tachometer-alt"></i>
+ 							<p>
+ 								Users
+ 							</p>
+ 						</a>
+ 					</li>
+ 				<?php endif; ?>
  				<li class="nav-item">
- 					<a href="<?= BASE_URL.'type/all_types'; ?>" class="nav-link">
- 						<i class="nav-icon fas fa-tachometer-alt"></i>
- 						<p>
- 							Link Types
- 						</p>
- 					</a>
- 				</li>
- 				<li class="nav-item">
- 					<a href="<?= BASE_URL.'auth/users'; ?>" class="nav-link">
- 						<i class="nav-icon fas fa-tachometer-alt"></i>
- 						<p>
- 							Users
- 						</p>
- 					</a>
- 				</li>
- 				<li class="nav-item">
- 					<a href="<?= BASE_URL.'auth/logout' ?>" class="nav-link">
+ 					<a href="<?= BASE_URL . 'auth/logout' ?>" class="nav-link">
  						<i class="nav-icon fas fa-tachometer-alt"></i>
  						<p>
  							Logout
  						</p>
  					</a>
  				</li>
- 				
+
  			</ul>
  		</nav>
  		<!-- /.sidebar-menu -->

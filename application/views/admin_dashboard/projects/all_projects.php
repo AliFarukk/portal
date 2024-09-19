@@ -78,9 +78,12 @@
 						<!-- /.card-header -->
 						<div class="card-body">
 							<!-- add project -->
-							<div>
-								<a class="btn btn-primary" href="<?= BASE_URL . 'project/add_project' ?>">Add Project</a>
-							</div>
+							<?php if ($this->session->userdata('user_session')->role_id == 1): ?>
+								<div>
+									<a class="btn btn-primary mt-1" href="<?= BASE_URL . 'project/add_project' ?>">Add Project</a>
+									<a class="btn btn-primary mt-1" href="<?= BASE_URL . 'project/add_client' ?>">Add Client in Project</a>
+								</div>
+							<?php endif; ?>
 
 							<!-- Table start -->
 							<table id="example1" class="table table-bordered table-striped">
@@ -88,6 +91,7 @@
 									<tr>
 										<th scope="col">ID</th>
 										<th scope="col">Name</th>
+										<th scope="col">Status</th>
 										<th>Action</th>
 
 
@@ -99,10 +103,13 @@
 											<tr>
 												<td><?= $project->project_id ?></td>
 												<td><?= $project->project_name ?></td>
+												<td><?= $project->status ?></td>
 												<td>
-													<a class="btn btn-primary" href="<?= BASE_URL . 'project/edit_project/' . $project->project_id ?>">Edit</a> <br>
-													<a class="btn btn-danger mt-1" href="<?= BASE_URL . 'project/delete/' . $project->project_id ?>" onclick="return confirm('Are you sure you want to delete this project')">Delete</a>
-													<br>
+													<?php if ($this->session->userdata('user_session')->role_id == 1): ?>
+														<a class="btn btn-primary" href="<?= BASE_URL . 'project/edit_project/' . $project->project_id ?>">Edit</a> <br>
+														<a class="btn btn-danger mt-1" href="<?= BASE_URL . 'project/delete/' . $project->project_id ?>" onclick="return confirm('Are you sure you want to delete this project')">Delete</a>
+														<br>
+													<?php endif; ?>
 													<a class="btn btn-primary mt-1" href="<?= BASE_URL . 'backlink/all_backlinks/' . $project->project_id ?>">Backlinks</a>
 													<br>
 													<a class="btn btn-primary mt-1" href="<?= BASE_URL . 'keyword/all_keywords/' . $project->project_id ?>">Keywords</a>

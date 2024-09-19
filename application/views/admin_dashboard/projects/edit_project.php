@@ -28,15 +28,15 @@
 			<div class="row">
 				<!-- left column -->
 				<div class="col-lg-12">
-					
-					<?php if($this->session->flashdata('errors')): ?>
+
+					<?php if ($this->session->flashdata('errors')): ?>
 						<div class="alert alert-danger alert-dismissible fade show" role="alert">
 							<?php echo $this->session->flashdata('errors'); ?>
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-					<?php endif;?>
+					<?php endif; ?>
 					<!-- general form elements -->
 					<div class="card card-primary">
 						<div class="card-header">
@@ -44,13 +44,22 @@
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
-						<form class="p-4" action="<?= BASE_URL . "project/update/".$project->project_id ?>" method="post">
+						<form class="p-4" action="<?= BASE_URL . "project/update/" . $project->project_id ?>" method="post">
 							<div class="form-group w-sm-100 w-lg-50">
 								<label for="exampleInputEmail1">Project Name</label>
-								<input type="text" name="name" value="<?=$project->project_name;?>" class="form-control" placeholder="Name">
+								<input type="text" name="name" value="<?= $project->project_name; ?>" class="form-control" placeholder="Name">
 
 							</div>
-							
+							<div class="form-group w-sm-100 w-lg-50">
+								<label for="">Select Status</label>
+								<select class="form-control form-control-sm" name="status" required>
+									<option value="">select</option>
+									<?php foreach ($status as $s) : ?>
+										<option value="<?= $s->id ?>" <?= ($s->id == $project->status_id) ? "selected" : ""; ?>><?= $s->status ?></option>
+									<?php endforeach; ?>
+								</select>
+							</div>
+
 							<input name="submit" type="submit" value="Update" class="btn btn-primary mt-3">
 						</form>
 					</div>

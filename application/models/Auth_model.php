@@ -78,6 +78,9 @@ class Auth_model extends CI_Model
 		}
 	}
 
-    
+    //get client users
+	public function clients(){
+		return $this->db->select('id,name')->from('users')->where('role_id',2)->get()->result();
+	}
 
 }//class end here

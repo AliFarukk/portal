@@ -95,7 +95,7 @@
 												<td><?= $user->name ?></td>
 												<td><?= $user->email ?></td>
 												<td>
-
+													<a class="btn btn-primary mt-1" href="<?= BASE_URL . 'project/client_permissions/' . $user->id; ?>" >View Permissions</a>
 													<a class="btn btn-danger mt-1" href="<?= BASE_URL . 'auth/delete/' . $user->id; ?>" onclick="return confirm('Are you sure you want to delete this user')">Delete</a>
 												</td>
 											</tr>

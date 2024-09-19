@@ -15,6 +15,10 @@ class Type extends CI_Controller
 		if (!$this->session->userdata('user_session')->logged_in) {
 			redirect(BASE_URL . 'auth/login');
 		}
+		// only admin can access this controller
+		if($this->session->userdata('user_session')->role_id == 2){
+			redirect(BASE_URL.'dashboard');
+		}
 	} //end function
 
 	public function all_types(){

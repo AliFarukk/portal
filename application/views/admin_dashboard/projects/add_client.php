@@ -9,12 +9,12 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1 class="m-0">Add Project</h1>
+					<h1 class="m-0">Add Client</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Add Project</li>
+						<li class="breadcrumb-item active">Add Client</li>
 					</ol>
 				</div>
 			</div>
@@ -28,9 +28,9 @@
 			<div class="row">
 				<!-- left column -->
 				<div class="col-lg-12">
-					<?php if (validation_errors()): ?>
+					<?php if ($this->session->flashdata('errors')): ?>
 						<div class="alert alert-danger alert-dismissible fade show" role="alert">
-							<?php echo validation_errors(); ?>
+							<?php echo $this->session->flashdata('errors'); ?>
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -47,22 +47,26 @@
 					<!-- general form elements -->
 					<div class="card card-primary">
 						<div class="card-header">
-							<h3 class="card-title">Add Project</h3>
+							<h3 class="card-title">Add Client</h3>
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
-						<form class="p-4" action="<?= BASE_URL . "project/save_project" ?>" method="post">
+						<form class="p-4" action="<?= BASE_URL . "project/save_client" ?>" method="post">
 							<div class="form-group w-sm-100 w-lg-50">
-								<label for="exampleInputEmail1">Project Name</label>
-								<input type="text" name="name" class="form-control" placeholder="Name">
-
+								<label for="">Select Project</label>
+								<select class="form-control form-control-sm" name="project" required>
+									<option value="">select</option>
+									<?php foreach ($projects as $project) : ?>
+										<option value="<?= $project->project_id ?>"><?= $project->project_name ?></option>
+									<?php endforeach; ?>
+								</select>
 							</div>
 							<div class="form-group w-sm-100 w-lg-50">
-								<label for="">Select Status</label>
-								<select class="form-control form-control-sm" name="status" required>
+								<label for="">Select User</label>
+								<select class="form-control form-control-sm" name="user" required>
 									<option value="">select</option>
-									<?php foreach ($status as $s) : ?>
-										<option value="<?= $s->id ?>"><?= $s->status ?></option>
+									<?php foreach ($users as $user) : ?>
+										<option value="<?= $user->id ?>"><?= $user->name ?></option>
 									<?php endforeach; ?>
 								</select>
 							</div>

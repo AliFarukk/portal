@@ -26,15 +26,30 @@
 	<section class="content">
 		<div class="container-fluid">
 			<!-- Small boxes (Stat box) -->
-			
-			<!-- chart -->
+
 			<div class="row">
+				<?php if (!empty($projects)) : ?>
+					<?php foreach ($projects as $project): ?>
+						<div class="col-lg-3 col-6">
+							<!-- small box -->
+							<div class="small-box bg-info">
+								<div class="inner">
+									<h3><?=$project->project_name?></h3>
+									<p class="mb-1">Total Backlinks: <?=$project->total_backlinks?></p>
+									<p>Total Keywords: <?=$project->total_keywords?></p>
+								</div>
+								<!-- <div class="icon">
+									<i class="ion ion-bag"></i>
+								</div> -->
+							</div>
+						</div>
+					<?php endforeach; ?>
+				<?php else: ?>
+					<div class="text-center mt-3 p-3">
+						Sorry, No projects assinged yet
+					</div>
+				<?php endif; ?>
 
-				<!-- /.col (LEFT) -->
-				<div class="col-md-12">
-
-				</div>
-				<!-- /.col (RIGHT) -->
 			</div>
 		</div>
 </div>

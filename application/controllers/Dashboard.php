@@ -1,7 +1,5 @@
 <?php
 
-use function PHPSTORM_META\type;
-
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller
@@ -23,7 +21,7 @@ class Dashboard extends CI_Controller
 	public function index()
 	{
 		$data['page_title'] = "Portal | Dashboard";
-		
+		$data['projects'] = $this->project_model->project_detail();		
 		$this->load->view('admin_dashboard/index', $data);
 	}
 }
