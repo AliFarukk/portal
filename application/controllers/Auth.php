@@ -69,14 +69,13 @@ class Auth extends CI_Controller
 		if (!$this->session->userdata('user_session')->logged_in) {
 			redirect(BASE_URL . 'auth/login');
 		}
-		if ($this->session->userdata('user_session')->role_id == 1){
+		if ($this->session->userdata('user_session')->role_id == 1) {
 			$data['page_title'] = 'All users';
 			$data['users'] = $this->auth_model->users();
 			$this->load->view('admin_dashboard/auth/all_users', $data);
-		}else{
-			redirect(BASE_URL.'dashboard');
+		} else {
+			redirect(BASE_URL . 'dashboard');
 		}
-		
 	}
 
 	// add user
@@ -166,6 +165,57 @@ class Auth extends CI_Controller
 			}
 		} else {
 			return redirect(BASE_URL . 'dashboard');
+		}
+	}
+
+	// logged user edit profile
+	public function edit_profile()
+	{
+		$data['page_title'] = "Account";
+		$data['user'] = $this->auth_model->logged_user();
+		$this->load->view('admin_dashboard/auth/edit_profile', $data);
+	}
+	// update logged user profile
+	public function update_profile()
+	{
+		$name = trim(html_escape($this->input->post('name', TRUE)));
+		$email = trim(html_escape($this->input->post('email', TRUE)));
+		$password = trim(html_escape($this->input->post('password', TRUE)));
+		$confrim_password = trim(html_escape($this->input->post('confirm_password', TRUE)));
+
+		if (($password == null) && ($confrim_password == null)) {
+			if(($this->auth_model->email_exist($email)) && ($this->session->userdata('user_session')->email != $email)){
+				$this->session->set_flashdata('email_exist', "Email already exists.");
+				return redirect(BASE_URL . 'auth/edit_profile');
+			}else{
+				$user = array(
+					'name' => $name,
+					'email' => $email
+				);
+				if ($this->auth_model->update_user($user)) {
+					$this->session->set_flashdata('success', "Profile updated successfully.");
+					return redirect(BASE_URL . 'auth/edit_profile');
+				}
+			}
+			
+		} elseif (($password != null) && ($confrim_password != null)) {
+			if ($password == $confrim_password) {
+				$user = array(
+					'name' => $name,
+					'email' => $email,
+					'password' => md5($password)
+				);
+				if ($this->auth_model->update_user($user)) {
+					$this->session->set_flashdata('success', "Profile updated successfully.");
+					return redirect(BASE_URL . 'auth/edit_profile');
+				}
+			} else {
+				$this->session->set_flashdata('password', "Password and confirm password dont match.");
+				return redirect(BASE_URL . 'auth/edit_profile');
+			}
+		} elseif ((($password != null) && ($confrim_password == null)) || (($password == null) && ($confrim_password != null))) {
+			$this->session->set_flashdata('password', "Password and confirm password both required.");
+			return redirect(BASE_URL . 'auth/edit_profile');
 		}
 	}
 }

@@ -55,7 +55,7 @@
  						</a>
  					</li>
  					<li class="nav-item">
- 						<a href="<?= BASE_URL . 'auth/users'; ?>" class="nav-link <?= (strpos(current_url(),'auth') !== false) ? "active-sidebar": "" ;?>">
+ 						<a href="<?= BASE_URL . 'auth/users'; ?>" class="nav-link <?= ((strpos(current_url(),'auth/users') !== false) || (strpos(current_url(),'auth/add_user') !== false)) ? "active-sidebar": "" ;?>">
  							<i class="nav-icon">
  								<img class="sst-sidebar-icon" src="<?= ASSETS . 'images/user-square.png' ?>">
  							</i>
@@ -65,6 +65,16 @@
  						</a>
  					</li>
  				<?php endif; ?>
+ 				<li class="nav-item">
+ 					<a href="<?= BASE_URL . 'auth/edit_profile' ?>" class="nav-link <?= (strpos(current_url(),'edit_profile') !== false) ? "active-sidebar": "" ;?>">
+ 						<i class="nav-icon">
+ 							<img class="sst-sidebar-icon" src="<?= ASSETS . 'images/user-square.png' ?>">
+ 						</i>
+ 						<p>
+ 							Profile
+ 						</p>
+ 					</a>
+ 				</li>
  				<li class="nav-item">
  					<a href="<?= BASE_URL . 'auth/logout' ?>" class="nav-link">
  						<i class="nav-icon">

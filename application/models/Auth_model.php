@@ -7,59 +7,62 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Auth_model extends CI_Model
 {
 
-    /**
-     * login
-     *
-     * @param  mixed $email
-     * @param  mixed $password
-     * @return void
-     */
-    public function login($email, $password)
-    {
+	/**
+	 * login
+	 *
+	 * @param  mixed $email
+	 * @param  mixed $password
+	 * @return void
+	 */
+	public function login($email, $password)
+	{
 
-        $this->db->select("*");
-        $this->db->where("(email = '$email' AND password = '$password')");
-        $query = $this->db->get('users');
-        if ($query->num_rows() > 0) {
-            $results = $query->row();
-        } else {
-            $results =  false;
-        }
-        return $results;
-    } // function ends
+		$this->db->select("*");
+		$this->db->where("(email = '$email' AND password = '$password')");
+		$query = $this->db->get('users');
+		if ($query->num_rows() > 0) {
+			$results = $query->row();
+		} else {
+			$results =  false;
+		}
+		return $results;
+	} // function ends
 
 	// check if email already exists
-	public function email_exist($email){
+	public function email_exist($email)
+	{
 		$this->db->select("*");
-        $this->db->where('email',$email);
-        $query = $this->db->get('users');
-        if ($query->num_rows() > 0) {
-            return true;
-        } else {
-           return false;
-        }
-        
+		$this->db->where('email', $email);
+		$query = $this->db->get('users');
+		if ($query->num_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	// all users 
-	public function users(){
+	public function users()
+	{
 		$this->db->select("u.id,u.name,u.email,r.role_name");
-        $this->db->from('users u');
-		$this->db->where_not_in('id',$this->session->userdata('user_session')->id);
-        $this->db->join('user_roles r','r.role_id = u.role_id');
-        $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            $results = $query->result();
-        } else {
-            $results =  false;
-        }
-        return $results;
+		$this->db->from('users u');
+		$this->db->where_not_in('id', $this->session->userdata('user_session')->id);
+		$this->db->join('user_roles r', 'r.role_id = u.role_id');
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			$results = $query->result();
+		} else {
+			$results =  false;
+		}
+		return $results;
 	}
 	// get user roles
-	public function get_roles(){
+	public function get_roles()
+	{
 		return $this->db->select('*')->from('user_roles')->get()->result();
 	}
 	// save user
-	public function save($user){
+	public function save($user)
+	{
 		$this->db->insert('users', $user);
 		if ($this->db->affected_rows() > 0) {
 			return true;
@@ -68,7 +71,8 @@ class Auth_model extends CI_Model
 		}
 	}
 	// delete user
-	public function delete($id){
+	public function delete($id)
+	{
 		$this->db->where('id', $id);
 		$query = $this->db->delete('users');
 		if ($query) {
@@ -78,9 +82,27 @@ class Auth_model extends CI_Model
 		}
 	}
 
-    //get client users
-	public function clients(){
-		return $this->db->select('id,name')->from('users')->where('role_id',2)->get()->result();
+	//get client users
+	public function clients()
+	{
+		return $this->db->select('id,name')->from('users')->where('role_id', 2)->get()->result();
 	}
 
+	// get loged-in user
+	public function logged_user()
+	{
+		return $this->db->select('name,email')->from('users')
+			->where('id', $this->session->userdata('user_session')->id)->get()->row();
+	}
+	// update logged user profile data
+	public function update_user($user)
+	{
+		$this->db->where('id', $this->session->userdata('user_session')->id);
+		$query = $this->db->update('users', $user);
+		if ($query) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }//class end here
