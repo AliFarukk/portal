@@ -2,20 +2,18 @@
 <?php require_once(APPPATH . 'views/admin_dashboard/inc/sidebar.php'); ?>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper bg-content-gray">
 
 	<!-- Content Header (Page header) -->
 	<div class="content-header">
 		<div class="container-fluid">
-			<div class="row mb-2">
+			<div class="row mb-2 align-items-center">
 				<div class="col-sm-6">
 					<h1 class="m-0">Users</h1>
 				</div>
 				<div class="col-sm-6">
-					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Users</li>
-					</ol>
+					<!-- add user -->
+					<a class="btn btn-primary btn-sst m-1 float-lg-right float-sm-left" href="<?= BASE_URL . 'auth/add_user'; ?>">Add User</a>
 				</div>
 			</div>
 		</div>
@@ -63,16 +61,8 @@
 
 					<!-- general form elements -->
 					<div class="card card-primary">
-						<div class="card-header">
-							<h3 class="card-title">List of Users</h3>
-						</div>
-						<!-- /.card-header -->
-						<div class="card-body">
-							<!-- add project -->
-							<div>
-								<a class="btn btn-primary" href="<?= BASE_URL . 'auth/add_user'; ?>">Add User</a>
-							</div>
 
+						<div class="card-body">
 							<!-- Table start -->
 							<table id="example1" class="table table-bordered table-striped">
 								<thead>
@@ -82,8 +72,6 @@
 										<th scope="col">Name</th>
 										<th scope="col">Email</th>
 										<th>Action</th>
-
-
 									</tr>
 								</thead>
 								<tbody>
@@ -95,15 +83,13 @@
 												<td><?= $user->name ?></td>
 												<td><?= $user->email ?></td>
 												<td>
-													<a class="btn btn-primary mt-1" href="<?= BASE_URL . 'project/client_permissions/' . $user->id; ?>" >View Permissions</a>
-													<a class="btn btn-danger mt-1" href="<?= BASE_URL . 'auth/delete/' . $user->id; ?>" onclick="return confirm('Are you sure you want to delete this user')">Delete</a>
+													<a title="Edit" class="sst-action-a" href="<?= BASE_URL . 'project/client_permissions/' . $user->id; ?>">View Permissions</a>
+													<a title="Delete" class="ml-2" href="<?= BASE_URL . 'auth/delete/' . $user->id; ?>" onclick="return confirm('Are you sure you want to delete this user')"><img class="sst-sidebar-icon" src="<?= ASSETS . 'images/delete-icon.png' ?>" alt=""></a>
 												</td>
 											</tr>
 
 										<?php endforeach; ?>
 									<?php endif; ?>
-
-
 								</tbody>
 							</table>
 						</div>

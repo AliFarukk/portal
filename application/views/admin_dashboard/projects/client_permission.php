@@ -11,12 +11,7 @@
 				<div class="col-sm-6">
 					<h1 class="m-0">Permission in Projects</h1>
 				</div>
-				<div class="col-sm-6">
-					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Permission in Projects</li>
-					</ol>
-				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -72,10 +67,7 @@
 
 					<!-- general form elements -->
 					<div class="card card-primary">
-						<div class="card-header">
-							<h3 class="card-title">Permission Projects</h3>
-						</div>
-						<!-- /.card-header -->
+
 						<div class="card-body">
 
 							<!-- Table start -->

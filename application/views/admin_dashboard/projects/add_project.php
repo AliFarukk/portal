@@ -2,21 +2,14 @@
 <?php require_once(APPPATH . 'views/admin_dashboard/inc/sidebar.php'); ?>
 
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper bg-content-white">
 
 	<!-- Content Header (Page header) -->
 	<div class="content-header">
 		<div class="container-fluid">
 			<div class="row mb-2">
-				<div class="col-sm-6">
-					<h1 class="m-0">Add Project</h1>
-				</div>
-				<div class="col-sm-6">
-					<ol class="breadcrumb float-sm-right">
-						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Add Project</li>
-					</ol>
-				</div>
+			
+
 			</div>
 		</div>
 	</div>
@@ -45,21 +38,21 @@
 						</div>
 					<?php endif; ?>
 					<!-- general form elements -->
-					<div class="card card-primary">
-						<div class="card-header">
-							<h3 class="card-title">Add Project</h3>
+					<div class="d-flex flex-column pt-5 justify-content-center align-items-center">
+						<div class="col-12 text-center">
+							<h1 class="m-0">Add Project</h1>
 						</div>
 						<!-- /.card-header -->
 						<!-- form start -->
-						<form class="p-4" action="<?= BASE_URL . "project/save_project" ?>" method="post">
+						<form class="p-4 col-lg-6 col-sm-12" action="<?= BASE_URL . "project/save_project" ?>" method="post">
 							<div class="form-group w-sm-100 w-lg-50">
 								<label for="exampleInputEmail1">Project Name</label>
-								<input type="text" name="name" class="form-control" placeholder="Name">
+								<input type="text" name="name" class="form-control input-bg" placeholder="Name">
 
 							</div>
 							<div class="form-group w-sm-100 w-lg-50">
 								<label for="">Select Status</label>
-								<select class="form-control form-control-sm" name="status" required>
+								<select class="form-control form-control-sm input-bg" name="status" required>
 									<option value="">select</option>
 									<?php foreach ($status as $s) : ?>
 										<option value="<?= $s->id ?>"><?= $s->status ?></option>
@@ -67,7 +60,7 @@
 								</select>
 							</div>
 
-							<input name="submit" type="submit" value="Submit" class="btn btn-primary mt-3">
+							<input name="submit" type="submit" value="Submit" class="btn btn-primary btn-sst mt-3">
 						</form>
 					</div>
 					<!-- /.card -->

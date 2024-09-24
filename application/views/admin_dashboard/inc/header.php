@@ -32,21 +32,145 @@
 	<link rel="stylesheet" href="<?= ASSETS ?>adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 	<!-- select search -->
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-</head>
-<!-- internal css -->
-<style>
-	.table-overflow {
-		overflow: auto;
-	}
 
-	@media screen and (max-width:575px) {
-		#items-table tr {
-			display: grid;
+	<!-- internal css -->
+	<style>
+
+		
+		.table-overflow {
+			overflow: auto;
 		}
-	}
-</style>
+
+		@media screen and (max-width:575px) {
+			#items-table tr {
+				display: grid;
+			}
+		}
+
+		.sst-nav {
+			position: fixed !important;
+			top:0px;
+			z-index: 999999;
+			width: 100% !important;
+			/* height: 50px !important; */
+			background-color: #fff !important;
+		}
+		/* main wrapper margin top from fixed sst-nav as height of sst-nav*/
+		.wrapper{
+			margin-top: 56px !important;
+		}
+		.sst-header-logo{
+			width: 140px;
+			height: auto;
+		}
+		/* aside setting */
+		aside {
+			/* top 56px because sst-nav height is 56px */
+			top:56px !important;
+			background-color: #6754e9 !important;
+		}
+
+		aside .os-content {
+			padding: 0 !important;
+		}
+
+		aside .nav-sidebar .nav-link {
+			color: #fff;
+		}
+
+		aside .nav-sidebar .nav-link:hover {
+			color: #6754e9 !important;
+			background-color: #fff !important;
+		}
+		.active-sidebar{
+			color: #6754e9 !important;
+			background-color: #fff !important;
+		}
+		.sst-sidebar-icon {
+			width: 20px;
+			height: auto;
+		}
+		/* no need for main header now. have sst-nav on top */
+		.main-header{
+			display: none !important;
+		}
+		/* dashboard card color */
+		.small-box{
+			background-color: #ebe8ff;
+		}
+		/* contaent-wrppaer background color */
+		.content-wrapper{
+			box-shadow: rgba(50, 50, 93, 0) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+		}
+		.bg-content-gray{
+			background-color: #fafafa !important;
+		}
+		.bg-content-white{
+			background-color: #fff;
+		}
+		/* button color */
+		.btn-sst{
+			background-color: #6754e9 !important;
+			color: #fff !important;
+		}
+		.btn-sst:hover{
+			background-color: #6754e90a !important;
+			color: #000 !important;
+		}
+		/* table styling */
+		table{
+			border: 0 !important;
+		}
+		th{
+			border: 0 !important;
+			border-bottom: 1px solid #eaeaea !important;
+		}
+		td{
+			border: 0 !important;
+			border-bottom: 1px solid #eaeaea !important;
+		}
+		tr{
+			background-color: transparent !important;
+		}
+		/* table action links */
+		.sst-action-a{
+			color: #6754e9 !important;
+			background-color: transparent !important;
+		}
+		.sst-action-a:hover{
+			text-decoration: underline !important;
+		}
+		/* forms styles */
+		.input-bg{
+			background: #f9f9f9 !important;
+		}
+		
+	</style>
+
+</head>
+
 
 <body class="hold-transition sidebar-mini layout-fixed">
+
+	<!-- top nav -->
+
+	<div class="sst-nav p-2 d-flex align-items-center justify-content-center">
+		<div class="col-6">
+			<img class="sst-header-logo" src="<?=ASSETS.'images/sst-logo.png'?>" alt="">
+		</div>
+		<div class="col-6">
+			<ul class="navbar-nav  float-right">
+				<li class="nav-item">
+					<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+
+
+
+	<!-- main wrapper -->
 	<div class="wrapper">
 
 		<!-- Preloader -->
@@ -55,6 +179,7 @@
     </div> -->
 
 		<!-- Navbar -->
+		 <!-- have sst-nav at top no need for this now -->
 		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 			<!-- Left navbar links -->
 			<ul class="navbar-nav">
