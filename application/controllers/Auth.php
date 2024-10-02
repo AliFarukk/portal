@@ -171,6 +171,11 @@ class Auth extends CI_Controller
 	// logged user edit profile
 	public function edit_profile()
 	{
+		// if user not logged in
+		if (!$this->session->userdata('user_session')->logged_in) {
+			redirect(BASE_URL . 'auth/login');
+		}
+
 		$data['page_title'] = "Account";
 		$data['user'] = $this->auth_model->logged_user();
 		$this->load->view('admin_dashboard/auth/edit_profile', $data);
@@ -178,6 +183,11 @@ class Auth extends CI_Controller
 	// update logged user profile
 	public function update_profile()
 	{
+		// if user not logged in
+		if (!$this->session->userdata('user_session')->logged_in) {
+			redirect(BASE_URL . 'auth/login');
+		}
+		
 		$name = trim(html_escape($this->input->post('name', TRUE)));
 		$email = trim(html_escape($this->input->post('email', TRUE)));
 		$password = trim(html_escape($this->input->post('password', TRUE)));
